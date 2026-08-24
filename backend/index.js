@@ -4,18 +4,17 @@ const connectDB = require("./config/db");
 
 dotenv.config({
   path: "./.env",
-}); //configure env
+});
 
-const port = process.env.PORT || 5000; //set port
+const port = process.env.PORT || 5000;
 
-connectDB() //connect to mongoDB
+connectDB()
   .then(() => {
     app.listen(port, () => {
-      //start server
-      console.log(`Example app listrning on ${port}`);
+      console.log(`Server listening on port ${port}`);
     });
   })
   .catch((err) => {
-    console.error("mongoDB connection errror");
-    process.exit(1); //stops the Node.js process.
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
   });
